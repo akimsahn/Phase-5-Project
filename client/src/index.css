@@ -1,13 +1,435 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Barlow';
+  height: 100%;
+  background-color: rgb(250, 248, 241);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+html, .full-height {
+  height: 100%;
+}
+
+input, textarea {
+  font-family: 'Barlow';
+  font-size: 16px;
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.login-page {
+  background-color: rgb(124, 173, 182);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.user-form input, .user-form textarea {
+  box-sizing: border-box;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: rgb(124, 173, 182);
+  padding: 12px 2%;
+}
+
+.navbar button {
+  background-color: rgb(245, 206, 14);
+}
+
+.nav-left {
+  font-family: 'Courgette';
+  color: white;
+  font-size: 48px;
+  text-shadow: 0 0 5px rgb(20, 83, 134);
+}
+
+.nav-left h1 {
+  margin: 0;
+}
+
+.nav-right {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 1em;
+  color: white;
+  font-size: 18px;
+}
+
+.padding {
+  padding: 2% 4%;
+}
+
+.footer {
+  bottom: 0;
+  width: 100%;
+}
+
+.collection-info {
+  position: relative;
+  background-image: linear-gradient(to top left, rgb(200, 232, 205),rgb(233, 249, 236));
+  padding: 2% 4%;
+}
+
+.collection-info p {
+  margin: 0;
+  font-size: 18px;
+}
+
+.description-box {
+  margin-top: 1%;
+  width: 65%;
+}
+
+.description-box textarea {
+  width: 75%;
+}
+
+.inline-block {
+  display: inline-block;
+  vertical-align: top;
+  padding-right: 5%;
+}
+
+.inline-block input {
+  width: 80%;
+  font-size: 20px;
+}
+
+.name-block {
+  width: 45%;
+}
+
+.subject-block {
+  width: 30%;
+}
+
+.buttons {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 2% 4%;
+  box-sizing: border-box;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.cancel-button, .card .cancel-button {
+  margin-left: 5px;
+  background-color: rgb(181, 189, 188);
+}
+
+.cancel-button:hover, .card .cancel-button:hover {
+  background-color: rgb(183, 201, 200);
+}
+
+.popup-content {
+  position: fixed!important;
+  top: 50%!important;
+  left: 50%!important;
+  transform: translate(-50%, -50%);
+}
+
+.popup {
+  background-color: rgb(255, 255, 255);
+  padding: 20px;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 5px 10px rgb(176, 176, 176);
+  display: flex;
+  flex-direction: column;
+}
+
+.popup input {
+  margin: 1rem;
+}
+
+.fixed-position-bottom {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  bottom: 0;
+  left: 6%;
+  width: 88%;
+  height: 4rem;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgb(196, 196, 196);
+  transition: .5s all;
+}
+
+.fixed-position-bottom:hover {
+  height: 5rem;
+  left: 4%;
+  width: 92%;
+}
+
+.fixed-position-bottom button {
+  height: 50%;
+  width: 15%;
+  min-width: 10rem;
+}
+
+.flex-row-space-between {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flex-column-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.flashcard-form {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  margin: 3% 4%;
+}
+
+.flashcard-form textarea {
+  padding: 8px;
+}
+
+.title {
+  font-family: 'Roboto Slab';
+  margin: 0;
+}
+
+.card-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-bottom: 3em;
+}
+
+.card {
+  background-color: white;
+  width: 250px;
+  min-height: 250px;
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: .5s all;
+}
+
+.card:hover {
+  box-shadow: 0 0 10px gray;
+  padding: 25px;
+  margin: 15px;
+}
+
+.card-bottom p {
+  text-align: right;
+  font-size: 14px;
+  margin-bottom: 1em!important;
+}
+
+.card h3 {
+  color:rgb(242, 120, 146);
+  margin-bottom: .5em;
+}
+
+.card p {
+  margin-top: 0;
+  margin-bottom: .5em;
+  color: gray;
+}
+
+.card i, .popup i {
+  color: gray;
+  text-align: right;
+}
+
+.card .title {
+  color: rgb(10, 146, 180);
+}
+
+.flashcard {
+  width: 25%!important;
+  min-width: 250px;
+}
+
+.card.flashcard p {
+  color: black;
+}
+
+.blue-button {
+  background-color: rgb(10, 146, 180);
+}
+
+.pink-button {
+  background-color: rgb(248, 147, 169);
+}
+
+.testing-card {
+  font-family: 'Noto Serif';
+  font-size: 3.5vh;
+  height: 47vh;
+  min-height: 150px;
+  aspect-ratio: 7 / 4;
+  perspective: 1000px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #ccc;
+  transition: transform .7s;
+  transform-style: preserve-3d;
+}
+
+.testing-card.flipped .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  padding: 5vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backface-visibility: hidden;
+}
+
+.flip-card-back {
+  transform: rotateY(180deg);
+}
+
+.testing-buttons {
+  gap: 20px;
+}
+
+.testing-buttons button {
+  width: 130px;
+  padding: 4px 16px;
+}
+
+.testing-card, .testing-buttons i, .fa-arrow-left {
+  cursor: pointer;
+  margin: .5rem;
+}
+
+.fa-angle-left, .fa-angle-right {
+  font-size: 12px;
+}
+
+.fa-check-circle {
+  font-size: 32px;
+  color: green;
+}
+
+.fa-times-circle {
+  font-size: 32px;
+  color: red;
+}
+
+.invisible {
+  opacity: 0;
+  cursor: default;
+}
+
+.error {
+  color: red!important;  
+  background-color: rgb(255, 221, 221);
+  margin-bottom: .5rem!important;
+  margin-top: 0!important;
+  padding: 0 .5rem;
+  border-radius: 3px;
+  max-width: 400px;
+}
+
+.error i {
+  color: red!important; 
+}
+
+.green-message {
+  color: green!important;  
+  background-color: rgb(199, 251, 199);
+  margin-bottom: .5rem!important;
+  margin-top: 0!important;
+  padding: 0 .5rem;
+  border-radius: 3px;
+}
+
+.green-message i {
+  color: green!important;
+}
+
+.delete-button {
+  color: red;
+  background-color: white;
+  border: 1px solid lightgray;
+}
+
+.delete-button:hover {
+  background-color: rgb(246, 221, 221);
+}
+
+.praise {
+  font-family: 'Courgette';
+  font-size: 36px;
+}
+
+.center {
+  text-align: center;
+}
+
+.bottom-margin {
+  margin-bottom: 4rem;
+}
+
+h1, h2, h3, h4 {
+  margin-top: 0;
+  margin-bottom: .5em;
+}
+
+label, .fa-arrow-left:hover, .card i:hover, .popup i:hover {
+  color: rgb(2, 159, 138);
+}
+
+button {
+  font-family: 'Roboto Slab';
+  font-size: 14px;
+  color: white;
+  background-color: rgb(104, 218, 164);
+  border: none;
+  border-radius: 5px;
+  padding: 7px 18px;
+}
+
+button:hover {
+  filter: brightness(108%);
+}
+
+textarea {
+  resize: none;
+}
+
+button:disabled {
+  background-color:rgba(112, 165, 178, 0.315)!important;
+  color: rgba(16, 16, 16, 0.3)!important;
 }
