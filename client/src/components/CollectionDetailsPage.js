@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import FlashcardsList from "./FlashcardsList";
+import TestModeSelection from "./TestModeSelection";
 import UserSearch from "./UserSearch";
 
-function CollectionDetailsPage({ user, handleCollectionUpdate }) {
+function CollectionDetailsPage({ user, handleCollectionUpdate, setShowDefinitionFirst }) {
   const [editMode, setEditMode] = useState(false);
   const [collection, setCollection] = useState([]);
   const [updatedCollection, setUpdatedCollection] = useState([]);
@@ -96,12 +97,9 @@ function CollectionDetailsPage({ user, handleCollectionUpdate }) {
   return (
     <div>
       {editMode ? (
-        <div className="collection-info">
-          {errors.map((err) => (
-                <p className="error">{err}</p>
-              ))}
-          <form onSubmit={handleSubmit}>
-            <div className="inline-block name-block">
+        <form className="collection-info flex-row-space-between" onSubmit={handleSubmit}>
+          <div className="collection-info-inner">
+            <div className="name-block">
               <label>Collection Name:</label><br/>
               <input
                 type='text'
@@ -109,8 +107,11 @@ function CollectionDetailsPage({ user, handleCollectionUpdate }) {
                 value={updatedCollection.name}
                 onChange={handleChange}
               />
+              {errors.map((err) => (
+                <p className="error">{err}</p>
+              ))}
             </div>
-            <div className="inline-block subject-block">
+            <div className="subject-block">
               <label>Subject:</label><br/>
               <input
                 type='text'
@@ -128,32 +129,34 @@ function CollectionDetailsPage({ user, handleCollectionUpdate }) {
                 onChange={handleChange}
               />
             </div>
-            <div className="buttons">
-              <div>
-                <button type='submit'>Save</button>
-                <button className='cancel-button' onClick={handleCancel}>Cancel</button>
-              </div>
-                <button type="button" className="delete-button" onClick={handleDelete}>
-                  Delete Collection
-                </button>
+          </div>
+          <div className="flex-column-space-between">
+            <div className="flex-row-space-between">
+              <button type='submit'>Save</button>
+              <button className='cancel-button left-margin' onClick={handleCancel}>Cancel</button>
             </div>
-          </form>
-        </div>
+            <button type="button" className="delete-button" onClick={handleDelete}>
+              Delete Collection
+            </button>
+          </div>
+        </form>
       ) : (
-        <div className="collection-info">
-          <div className="inline-block name-block">
-            <label>Collection Name:</label>
-            <h2>{collection.name}</h2>
+        <div className="collection-info flex-row-space-between">
+          <div className="collection-info-inner">
+            <div className="name-block">
+              <label>Collection Name:</label>
+              <h2>{collection.name}</h2>
+            </div>
+            <div className="subject-block">
+              <label>Subject:</label>
+              <h2>{collection.subject}</h2>
+            </div>
+            <div className="description-box">
+              <label>Description:</label>
+              <p>{collection.short_description}</p>
+            </div>
           </div>
-          <div className="inline-block subject-block">
-            <label>Subject:</label>
-            <h2>{collection.subject}</h2>
-          </div>
-          <div className="description-box">
-            <label>Description:</label>
-            <p>{collection.short_description}</p>
-          </div>
-          <div className="buttons">
+          <div className="flex-column-space-between">
             <button onClick={switchToEditMode}><i className="fas fa-edit" />&nbsp; Edit Collection</button>
             <UserSearch collection={collection} user={user} />
           </div>
@@ -171,14 +174,8 @@ function CollectionDetailsPage({ user, handleCollectionUpdate }) {
           inDatabase={true}
           setErrors={setErrors}
         />
-        <div className="fixed-position-bottom">
-          <button
-            disabled={collection.count === 0}
-            className="blue-button"
-            onClick={() => pushHistory(`/test_mode/${id}`)}
-          >
-            Start Studying!
-          </button>
+        <div className="fixed-position-bottom flex-column-center">
+          <TestModeSelection id={id} count={collection.count} setShowDefinitionFirst={setShowDefinitionFirst} />
         </div>
       </div>
     </div>

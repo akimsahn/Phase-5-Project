@@ -40,16 +40,20 @@ function MakeCollectionPage({ setCollections }) {
     <div className="padding flex-column-center">
       <h2 className="title">Create a New Collection</h2>
       <br/>
-      <form className="user-form" onSubmit={handleSubmit}>
-        <label>Collection Name:</label><br/>
+      <form onSubmit={handleSubmit}>
+        <label>Collection Name*:</label><br/>
         <input type='text' name='name' value={collectionData.name} onChange={handleChange} /><br/>
+        <p>&nbsp;*required</p>
         <label>Subject:</label><br/>
         <input type='text' name='subject' value={collectionData.subject} onChange={handleChange} /><br/>
+        <p>&nbsp;{'(optional)'}</p>
         <label>Short Description:</label><br/>
         <textarea rows='7' name='short_description' value={collectionData.short_description} onChange={handleChange} /><br/>
+        <p>&nbsp;{'(optional)'}</p>
         {errors.map((err) => (
               <p className='error'>{err}</p>
         ))}
+        <br/>
         <div className="flex-column-center">
           <button type='submit'>Create Collection</button>
         </div>

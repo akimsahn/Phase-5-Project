@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 import LoginPage from "./LoginPage";
 import NavBar from "./NavBar";
 import CollectionDetailsPage from "./CollectionDetailsPage";
@@ -12,6 +12,7 @@ import About from "./About";
 function App() {
   const [user, setUser] = useState(null);
   const [collections, setCollections] = useState([]);
+  const [showDefinitionFirst, setShowDefinitionFirst] = useState(false);
 
   useEffect(() => {
     // auto-login
@@ -43,13 +44,22 @@ function App() {
         <NavBar user={user} setUser={setUser} setCollections={setCollections} />
         <Switch>
           <Route exact path="/">
-            <CollectionsPage collections={collections} setCollections={setCollections} />
+            <CollectionsPage
+              user={user}
+              collections={collections}
+              setCollections={setCollections}
+              setShowDefinitionFirst={setShowDefinitionFirst}
+            />
           </Route>
           <Route exact path="/about">
             <About />
           </Route>
           <Route exact path="/collection/:id">
-            <CollectionDetailsPage user={user} handleCollectionUpdate={handleCollectionUpdate} />
+            <CollectionDetailsPage
+              user={user}
+              handleCollectionUpdate={handleCollectionUpdate}
+              setShowDefinitionFirst={setShowDefinitionFirst}
+            />
           </Route>
           <Route exact path="/new_collection">
             <MakeCollectionPage setCollections={setCollections} />
@@ -58,7 +68,7 @@ function App() {
             <MakeFlashcardsPage collections={collections} />
           </Route>
           <Route exact path="/test_mode/:id">
-            <TestModePage collections={collections} />
+            <TestModePage showDefinitionFirst={showDefinitionFirst} />
           </Route>
         </Switch>
       </div>

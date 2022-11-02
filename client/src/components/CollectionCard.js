@@ -1,7 +1,8 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
+import TestModeSelection from "./TestModeSelection";
 
-function CollectionCard({ collection }) {
+function CollectionCard({ collection, setShowDefinitionFirst }) {
   const { id, name, subject, short_description, count } = collection
   const history = useHistory();
 
@@ -14,7 +15,7 @@ function CollectionCard({ collection }) {
   }
   
   return (
-    <div className="card">
+    <div className="card flex-column-space-between">
       <div className="full-height" onClick={handleCollectionClick}>
         <h2>{name}</h2>
         <h3>{subject}</h3>
@@ -25,7 +26,7 @@ function CollectionCard({ collection }) {
       <div className="card-bottom">
         <p>{count === 1 ? '1 Flashcard' : `${count} Flashcards`}</p>
         <div className="flex-column-center">
-          <button disabled={count === 0} className="blue-button" onClick={routeToTestMode}>Start Studying!</button>
+          <TestModeSelection id={id} count={count} setShowDefinitionFirst={setShowDefinitionFirst} />
         </div>
       </div>
     </div>

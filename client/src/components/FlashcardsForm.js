@@ -49,10 +49,10 @@ function FlashcardsForm({ inputData, setInputData, generateFlashcardData }) {
             </ul>
             <b>And you may add as many flashcards as needed!!</b>
           </div>
-          <textarea cols="100" placeholder={placeholder} value={inputData} onChange={handleChange} />
+          <textarea placeholder={placeholder} value={inputData} onChange={handleChange} />
         </div>
         <div className="flex-column-center">
-          <button type="submit">Preview Flashcards</button>
+          <button disabled={!inputData} type="submit">Preview Flashcards</button>
         </div>
       </form>
     </div>

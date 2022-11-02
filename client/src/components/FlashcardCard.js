@@ -32,22 +32,22 @@ function FlashcardCard({ flashcard, handleUpdatedFlashcard, handleDeletedFlashca
 
   return (
     editMode ? (
-      <form className="card flashcard" onSubmit={handleSubmit}>
+      <form className="flex-column-space-between card flashcard" onSubmit={handleSubmit}>
         <div className="flex-row-space-between">
           <button type='submit'>Save</button>
           <button className='cancel-button' type='button' onClick={handleCancel}>Cancel</button>
         </div>
-        <label>Question:</label>
+        <label>Term:</label>
         <textarea rows="3" name='question' value={question} onChange={handleChange} />
-        <label>Answer:</label>
+        <label>Definition:</label>
         <textarea rows="3" name='answer' value={answer} onChange={handleChange} />
       </form>
     ) : (
-      <div className="card flashcard">
+      <div className="flex-column-space-between card flashcard">
         <i className="far fa-edit" onClick={switchToEditMode}/>
-        <label>Question:</label>
+        <label>Term:</label>
         <p>{question}</p>
-        <label>Answer:</label>
+        <label>Definition:</label>
         <p>{answer}</p>
         <button className='delete-button' onClick={handleDelete}>Remove Flashcard</button>
       </div>

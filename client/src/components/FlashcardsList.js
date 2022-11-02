@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import FlashcardCard from "./FlashcardCard";
 
 function FlashcardsList({ collectionId, flashcardData, setFlashcardData, inDatabase, setErrors }) {

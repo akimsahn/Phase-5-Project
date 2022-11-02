@@ -1,7 +1,8 @@
 body {
   margin: 0;
   font-family: 'Barlow';
-  height: 100%;
+  min-height: 100vh;
+  position: relative;
   background-color: rgb(250, 248, 241);
 }
 
@@ -17,13 +18,17 @@ input, textarea {
   padding: 5px;
 }
 
+textarea {
+  resize: none;
+}
+
 .login-page {
   background-color: rgb(124, 173, 182);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+  min-height: 100vh;
+}
+
+.login-page .card, .login-page .card:hover {
+  margin: 1rem auto auto auto!important;
 }
 
 .user-form input, .user-form textarea {
@@ -33,32 +38,28 @@ input, textarea {
 }
 
 .navbar {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
   background-color: rgb(124, 173, 182);
-  padding: 12px 2%;
+  padding: 1em;
 }
 
 .navbar button {
   background-color: rgb(245, 206, 14);
 }
 
-.nav-left {
+.logo {
   font-family: 'Courgette';
   color: white;
   font-size: 48px;
-  text-shadow: 0 0 5px rgb(20, 83, 134);
-}
-
-.nav-left h1 {
-  margin: 0;
+  text-shadow: 0 0 5px rgb(86, 119, 125);
 }
 
 .nav-right {
-  display: inline-flex;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-end;
   align-items: baseline;
-  gap: 1em;
+  column-gap: 1em;
   color: white;
   font-size: 18px;
 }
@@ -67,69 +68,35 @@ input, textarea {
   padding: 2% 4%;
 }
 
-.footer {
-  bottom: 0;
-  width: 100%;
-}
-
 .collection-info {
-  position: relative;
-  background-image: linear-gradient(to top left, rgb(200, 232, 205),rgb(233, 249, 236));
   padding: 2% 4%;
+  background-image: linear-gradient(to top left, rgb(200, 232, 205),rgb(233, 249, 236));
+  align-items: normal!important;
+  gap: 10px;
 }
 
-.collection-info p {
-  margin: 0;
-  font-size: 18px;
+.collection-info-inner {
+  display: flex;
+  flex-wrap: wrap;
+  width: 70vw;
+  column-gap: 5em;
 }
 
 .description-box {
   margin-top: 1%;
-  width: 65%;
+  max-width: 45vmax;
 }
 
 .description-box textarea {
-  width: 75%;
+  width: 45vw;
 }
 
-.inline-block {
-  display: inline-block;
-  vertical-align: top;
-  padding-right: 5%;
+.name-block, .subject-block, .description-box {
+  min-width: 45vmin;
 }
 
-.inline-block input {
-  width: 80%;
-  font-size: 20px;
-}
-
-.name-block {
-  width: 45%;
-}
-
-.subject-block {
-  width: 30%;
-}
-
-.buttons {
-  position: absolute;
-  top: 0;
-  right: 0;
-  padding: 2% 4%;
-  box-sizing: border-box;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.cancel-button, .card .cancel-button {
-  margin-left: 5px;
-  background-color: rgb(181, 189, 188);
-}
-
-.cancel-button:hover, .card .cancel-button:hover {
-  background-color: rgb(183, 201, 200);
+.name-block input, .subject-block input {
+  width: 45vmin;
 }
 
 .popup-content {
@@ -155,23 +122,21 @@ input, textarea {
 
 .fixed-position-bottom {
   position: fixed;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  bottom: 0;
-  left: 6%;
-  width: 88%;
+  bottom: -5px;
+  left: 5%;
+  width: 90%;
   height: 4rem;
   background-color: white;
-  border-radius: 5px;
   box-shadow: 0 0 5px rgb(196, 196, 196);
+  border-radius: 5px;
   transition: .5s all;
 }
 
 .fixed-position-bottom:hover {
-  height: 5rem;
+  height: 4.5rem;
   left: 4%;
   width: 92%;
+  bottom: 0;
 }
 
 .fixed-position-bottom button {
@@ -187,21 +152,36 @@ input, textarea {
   align-items: center;
 }
 
+.flex-column-space-between {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 .flex-column-center {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
 }
 
 .flashcard-form {
   display: flex;
   flex-direction: row;
-  align-items: stretch;
-  margin: 3% 4%;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  row-gap: 10px;
+  margin: 2% 3%;
 }
 
 .flashcard-form textarea {
+  width: 40vmax;
+  min-height: 40vh;
   padding: 8px;
+}
+
+.flashcard-form div {
+  width: 40vmax;
 }
 
 .title {
@@ -224,10 +204,8 @@ input, textarea {
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   transition: .5s all;
+  cursor: pointer;
 }
 
 .card:hover {
@@ -244,46 +222,38 @@ input, textarea {
 
 .card h3 {
   color:rgb(242, 120, 146);
-  margin-bottom: .5em;
+  margin-bottom: .5em; /*for space under title in login page*/
+}
+
+.card .title {
+  color: rgb(10, 146, 180); 
 }
 
 .card p {
-  margin-top: 0;
-  margin-bottom: .5em;
   color: gray;
 }
 
 .card i, .popup i {
   color: gray;
   text-align: right;
-}
-
-.card .title {
-  color: rgb(10, 146, 180);
-}
-
-.flashcard {
-  width: 25%!important;
-  min-width: 250px;
+  cursor: pointer;
 }
 
 .card.flashcard p {
   color: black;
 }
 
-.blue-button {
-  background-color: rgb(10, 146, 180);
-}
-
-.pink-button {
-  background-color: rgb(248, 147, 169);
+.flashcard {
+  width: 25%!important;
+  min-width: 250px;
+  cursor: default;
 }
 
 .testing-card {
   font-family: 'Noto Serif';
-  font-size: 3.5vh;
+  font-size: 3vmin;
   height: 47vh;
-  min-height: 150px;
+  max-width: 90vw;
   aspect-ratio: 7 / 4;
   perspective: 1000px;
 }
@@ -295,7 +265,7 @@ input, textarea {
   background-color: white;
   border-radius: 10px;
   box-shadow: 0 0 10px #ccc;
-  transition: transform .7s;
+  transition: transform .5s;
   transform-style: preserve-3d;
 }
 
@@ -309,9 +279,6 @@ input, textarea {
   width: 100%;
   height: 100%;
   padding: 5vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   backface-visibility: hidden;
 }
 
@@ -320,7 +287,7 @@ input, textarea {
 }
 
 .testing-buttons {
-  gap: 20px;
+  gap: 1vw;
 }
 
 .testing-buttons button {
@@ -355,11 +322,9 @@ input, textarea {
 .error {
   color: red!important;  
   background-color: rgb(255, 221, 221);
-  margin-bottom: .5rem!important;
-  margin-top: 0!important;
   padding: 0 .5rem;
   border-radius: 3px;
-  max-width: 400px;
+  width: fit-content;
 }
 
 .error i {
@@ -369,14 +334,20 @@ input, textarea {
 .green-message {
   color: green!important;  
   background-color: rgb(199, 251, 199);
-  margin-bottom: .5rem!important;
-  margin-top: 0!important;
   padding: 0 .5rem;
   border-radius: 3px;
 }
 
 .green-message i {
   color: green!important;
+}
+
+.cancel-button {
+  background-color: rgb(181, 189, 188)!important;
+}
+
+.cancel-button:hover {
+  background-color: rgb(183, 201, 200)!important;
 }
 
 .delete-button {
@@ -387,6 +358,20 @@ input, textarea {
 
 .delete-button:hover {
   background-color: rgb(246, 221, 221);
+}
+
+.blue-button {
+  background-color: rgb(10, 146, 180);
+}
+
+.pink-button {
+  background-color: rgb(248, 147, 169);
+}
+
+.plain-button {
+  color: black;
+  background: none;
+  text-decoration: underline;
 }
 
 .praise {
@@ -402,7 +387,29 @@ input, textarea {
   margin-bottom: 4rem;
 }
 
-h1, h2, h3, h4 {
+.left-margin {
+  margin-left: 5px!important;
+}
+
+.footer {
+  position: absolute;
+  bottom: 1em;
+  width: 92%;
+}
+
+.about-elements {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}
+
+.about-elements div {
+  width: 20vmax;
+}
+
+h1, h2, h3, h4, p {
   margin-top: 0;
   margin-bottom: .5em;
 }
@@ -418,18 +425,20 @@ button {
   background-color: rgb(104, 218, 164);
   border: none;
   border-radius: 5px;
-  padding: 7px 18px;
+  padding: .5em 1.2em;
+  cursor: pointer;
 }
 
 button:hover {
-  filter: brightness(108%);
-}
-
-textarea {
-  resize: none;
+  filter: brightness(107%);
 }
 
 button:disabled {
   background-color:rgba(112, 165, 178, 0.315)!important;
   color: rgba(16, 16, 16, 0.3)!important;
+  cursor: default;
+}
+
+button:disabled:hover {
+  filter: brightness(100%);
 }

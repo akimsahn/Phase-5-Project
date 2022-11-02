@@ -23,12 +23,12 @@ function NavBar({ user, setUser, setCollections }) {
   }
 
   return (
-    <div className="navbar">
-      <div className='nav-left'>
+    <div className="navbar flex-row-space-between">
+      <div className='logo'>
         <Link to='/' style={style}>QuiXtudy</Link>
       </div>
       <div className='nav-right'>
-        <p>Hello, {user.username}!</p>
+        <p className='center'>Hello, {user.username}!</p>
         <button onClick={handleLogout}>Log Out</button>
       </div>
     </div>

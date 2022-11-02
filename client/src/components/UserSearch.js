@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Popup from 'reactjs-popup'
-// import '../popup.css'
 
 function UserSearch({ collection, user }) {
   const [username, setUsername] = useState("");
@@ -49,14 +48,14 @@ function UserSearch({ collection, user }) {
   return (
     <Popup
       trigger={
-      <button className="pink-button"><i className="fas fa-paper-plane" />&nbsp; Share Collection</button>
+        <button className="pink-button"><i className="fas fa-paper-plane" />&nbsp; Share Collection</button>
       }
       onClose={resetStates}
     >
       {close => (
         <div className="popup">
           <i className="fas fa-times" onClick={close} />
-          <form className="flex-column-center" onSubmit={handleSubmit}>
+          <form className="flex-column-center center" onSubmit={handleSubmit}>
             <br/>
             <label>Enter username to share collection with:</label>
             <input value={username} onChange={handleChange} />

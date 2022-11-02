@@ -7,7 +7,7 @@ const style = {
   "color": "black"
 }
 
-function CollectionsPage({ collections, setCollections }) {
+function CollectionsPage({ user, collections, setCollections, setShowDefinitionFirst }) {
   const history = useHistory();
 
   useEffect(() => {
@@ -16,6 +16,12 @@ function CollectionsPage({ collections, setCollections }) {
         res.json().then((data) => setCollections(data))
       }
     });
+    if (user.username === 'akim') {
+      fetch("/flashcards").then((res) => {
+        if (res.ok) {
+          res.json().then(data => console.log(data))
+      }})
+    }
   }, []);
 
   function routeToNewCollection() {
@@ -31,9 +37,11 @@ function CollectionsPage({ collections, setCollections }) {
         <button onClick={routeToNewCollection}>+ Create New Collection</button>
       </div>
       <div className="card-list">
-        {collections.map(collection => <CollectionCard key={collection.id} collection={collection} />)}
+        {collections.map(collection =>
+          <CollectionCard key={collection.id} collection={collection} setShowDefinitionFirst={setShowDefinitionFirst}
+        />)}
       </div>
-      <div className="footer flex-column-center">
+      <div className="footer center">
         <Link to='/about' style={style}>about</Link>
       </div>
     </div>

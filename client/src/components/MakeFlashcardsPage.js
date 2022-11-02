@@ -76,7 +76,7 @@ function MakeFlashcardsPage({ collections }) {
           inDatabase={false}
           setErrors={setErrors}
         />
-        <div className="fixed-position-bottom">
+        <div className="fixed-position-bottom flex-column-center">
           <button onClick={handleFlashcardCreation}>
             {isLoading ? "Creating..." : "Create Flashcards!"}
           </button>
