@@ -252,9 +252,8 @@ textarea {
 .testing-card {
   font-family: 'Noto Serif';
   font-size: 3vmin;
-  height: 47vh;
-  max-width: 90vw;
-  aspect-ratio: 7 / 4;
+  width: 85vmin;
+  height: 50vmin;
   perspective: 1000px;
 }
 
@@ -278,7 +277,8 @@ textarea {
   box-sizing: border-box;
   width: 100%;
   height: 100%;
-  padding: 5vh;
+  padding: 5vmin;
+  -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
 }
 
@@ -291,8 +291,9 @@ textarea {
 }
 
 .testing-buttons button {
-  width: 130px;
-  padding: 4px 16px;
+  width: 30vmin;
+  max-width: 130px;
+  padding: 4px 10px;
 }
 
 .testing-card, .testing-buttons i, .fa-arrow-left {

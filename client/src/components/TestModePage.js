@@ -135,7 +135,7 @@ function TestModePage({ showDefinitionFirst = false }) {
           <h3>{`${flashcardNumber} / ${collection.count}`}</h3>
           <div className="flex-row-space-between testing-buttons bottom-margin">
             {flashcardNumber === 1 ? <button className="invisible"/> : (
-              <button onClick={showPreviousCard}><i className="fas fa-angle-left"/>&nbsp;Previous</button>
+              <button onClick={showPreviousCard}><i className="fas fa-angle-left"/>Previous</button>
             )}
             {score[flashcardNumber] === "incorrect" ? (
               <i className="fas fa-times-circle" onClick={markAsIncorrect} />
@@ -148,7 +148,7 @@ function TestModePage({ showDefinitionFirst = false }) {
               <i className="far fa-check-circle" onClick={markAsCorrect} />
             )}
             {flashcardNumber === collection.count ? <button className="invisible"/> : (
-              <button onClick={showNextCard}>Next&nbsp;<i className="fas fa-angle-right"/></button>
+              <button onClick={showNextCard}>Next<i className="fas fa-angle-right"/></button>
             )}
           </div>
           <div className="fixed-position-bottom flex-column-center">
