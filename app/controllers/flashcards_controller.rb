@@ -28,23 +28,16 @@ class FlashcardsController < ApplicationController
   end
   
   def destroy
-    # One-time only
-    Flashcard.all.each { |flashcard|
-      if flashcard.collections.count == 0
-        flashcard.destroy
-      end
-    }
-    head :ok
-    # flashcard = find_flashcard
-    # if flashcard.only_collection_user_id == session[:user_id]
-    #   flashcard.destroy
-    #   render json: flashcard
-    # elsif find_collection.user.id == session[:user_id]
-    #   flashcard.collection_flashcards.where(collection_id: params[:collection_id]).destroy_all
-    #   render json: flashcard
-    # else
-    #   render json: { errors: ['Unauthorized'] }, status: :unauthorized
-    # end
+    flashcard = find_flashcard
+    if flashcard.only_collection_user_id == session[:user_id]
+      flashcard.destroy
+      render json: flashcard
+    elsif find_collection.user.id == session[:user_id]
+      flashcard.collection_flashcards.where(collection_id: params[:collection_id]).destroy_all
+      render json: flashcard
+    else
+      render json: { errors: ['Unauthorized'] }, status: :unauthorized
+    end
   end
 
   private
