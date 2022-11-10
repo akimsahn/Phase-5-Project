@@ -413,6 +413,8 @@ textarea {
 h1, h2, h3, h4, p {
   margin-top: 0;
   margin-bottom: .5em;
+  white-space: pre-line;
+  word-wrap: break-word;
 }
 
 label, .fa-arrow-left:hover, .card i:hover, .popup i:hover {
